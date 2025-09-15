@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 from dotenv import find_dotenv, load_dotenv
 
 
-load_dotenv(find_dotenv("../../../.env"))
+load_dotenv(find_dotenv("../../../api.env"))
 
 class Settings(BaseSettings):
     server_host: str = '127.0.0.1'
