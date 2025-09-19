@@ -62,7 +62,3 @@ coverage.xml
 # Mac / Windows system files
 .DS_Store
 Thumbs.db
-
-
-docker-compose.yaml
-nginx.conf.template
