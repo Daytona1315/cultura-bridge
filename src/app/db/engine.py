@@ -3,8 +3,14 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sess
 from src.app.core.config import settings as stg
 
 
+postgres_url: str = f'postgresql+asyncpg://\
+{stg.postgres_user}:\
+{stg.postgres_password}@db:\
+{stg.postgres_port}/\
+{stg.postgres_db}'
+
 engine = create_async_engine(
-    url=f"postgresql+asyncpg://{stg.db_user}:{stg.db_password}@localhost:{stg.db_port}/{stg.db_name}",
+    url=postgres_url,
     echo=False,
     pool_pre_ping=True,
     pool_size=5,

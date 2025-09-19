@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from sqlalchemy import text
 
 from src.app.db.engine import engine
+from src.app.api.routers.test import router as test_router
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +31,7 @@ def create_app() -> FastAPI:
         title="MyApp",
         lifespan=lifespan,
     )
+    app.include_router(test_router)
 
     return app
 
