@@ -1,0 +1,28 @@
+LICENSE AGREEMENT (EULA)
+
+Last Updated: October 2025
+
+INTRODUCTION
+This End User License Agreement ("Agreement") is a legal agreement between you ("User") and Cultura Bridge ("Company") regarding the use of the Cultura Bridge mobile application and website.
+
+LICENSE GRANT
+Cultura Bridge grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and use the Application strictly in accordance with the terms of this Agreement.
+
+RESTRICTIONS
+You agree not to, and you will not permit others to:
+
+License, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose, or otherwise commercially exploit the Application.
+
+Modify, make derivative works of, disassemble, decrypt, reverse compile, or reverse engineer any part of the Application.
+
+INTELLECTUAL PROPERTY
+The Application, including all content, graphics, user interface, audio clips, video clips, editorial content, and the scripts and software used to implement the Application, contains proprietary information and material that is owned by Cultura Bridge and is protected by applicable intellectual property and other laws.
+
+DISCLAIMER OF WARRANTIES
+The Application is provided to you "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, Cultura Bridge expressly disclaims all warranties, whether express, implied, statutory, or otherwise.
+
+LIMITATION OF LIABILITY
+To the fullest extent permitted by applicable law, in no event shall Cultura Bridge be liable for any special, incidental, indirect, or consequential damages whatsoever.
+
+CONTACT INFORMATION
+If you have any questions about this Agreement, please contact us at support@culturabridge.com.

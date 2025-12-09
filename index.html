@@ -39,7 +39,7 @@
         }
     </script>
 
-    <!-- Favicon (Using a simple rect as placeholder or keep existing if you want) -->
+    <!-- Favicon -->
     <link rel="icon" href="static/favicon.ico">
 
     <style>
@@ -89,17 +89,6 @@
             z-index: 10;
         }
 
-        /* Utility for placeholder areas */
-        .placeholder-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0,0,0,0.1);
-            border: 2px dashed rgba(0,0,0,0.2);
-            color: rgba(0,0,0,0.5);
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden selection:bg-cultura selection:text-white">
@@ -110,8 +99,8 @@
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo Link -->
                 <a href="#promo" class="flex items-center gap-3 group cursor-pointer">
-                    <div class="w-12 h-10 placeholder-area text-xs rounded">
-                        <img src="static/logo.svg" alt="cultura bridge"/>
+                    <div class="w-12 h-10">
+                        <img src="static/castle.svg" alt="cultura bridge"/>
                     </div>
                 </a>
 
@@ -164,12 +153,9 @@
                 <div class="space-y-10 text-center lg:text-left">
                     <!-- Hero Logo Area -->
                     <div class="flex items-center justify-center lg:justify-start gap-4 mb-4">
-                        <div class="w-20 h-16 placeholder-area rounded text-xs">
+                        <div class="w-full h-full rounded text-xs">
                             <img src="static/logo.svg" alt="cultura bridge"/>
                         </div>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 tracking-tight">
-                            Cultura <span class="text-cultura">Bridge</span>
-                        </h1>
                     </div>
 
                     <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
@@ -202,15 +188,8 @@
                         <!-- Screen -->
                         <div class="h-full w-full bg-gray-50 flex flex-col relative">
                             <!-- Header -->
-                            <div class="bg-cultura h-48 p-6 flex flex-col justify-end relative overflow-hidden"> <!-- Increased height to fit logo -->
+                            <div class="bg-cultura h-28 p-6 flex flex-col justify-end relative overflow-hidden"> <!-- Increased height to fit logo -->
                                 <div class="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-
-                                <div class="w-full flex justify-center mb-3 relative z-10">
-                                    <div class="w-12 h-12 bg-white/20 backdrop-blur border border-white/30 rounded-full flex items-center justify-center text-[10px] text-white font-bold">
-                                        <img src="static/logo.svg" alt="cultura bridge"/>
-                                    </div>
-                                </div>
-
                                 <div class="text-white font-bold text-xl relative z-10">Hi, Student! 👋</div>
                                 <div class="text-red-100 text-sm relative z-10">Let's bridge some cultures today.</div>
                             </div>
@@ -282,7 +261,7 @@
 
         <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <svg class="w-6 h-6" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
     </header>
 
@@ -425,6 +404,9 @@
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-900 opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+             <div class="flex justify-center mb-6">
+                <img src="static/logo_white.svg" alt="cultura bridge" class="h-10 md:h-12 w-auto">
+             </div>
             <h2 class="text-3xl md:text-5xl font-bold mb-8">Ready to Bridge the Gap?</h2>
             <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
                 Join our community of learners turning cultural differences into meaningful connections.
@@ -433,29 +415,37 @@
             <!-- Social Proof -->
             <div class="flex flex-col items-center justify-center gap-3 mb-12">
                 <div class="flex -space-x-4">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
-                    <div class="w-12 h-12 rounded-full bg-gray-600 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
-                    <div class="w-12 h-12 rounded-full bg-gray-500 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
-                    <div class="w-12 h-12 rounded-full bg-cultura border-4 border-gray-900 flex items-center justify-center text-xs font-bold text-white">+1k</div>
+                    <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
+                        <img src="static/stud_1.webp" alt="student" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
+                        <img src="static/stud_3.webp" alt="student" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
+                        <img src="static/stud_2.webp" alt="student" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-cultura border-2 border-gray-600 flex items-center justify-center text-xs font-bold text-white relative z-10">
+                        +1k
+                    </div>
                 </div>
                 <p class="text-gray-400 font-medium">Joined by 1000+ global learners</p>
             </div>
 
-            <!-- Store Buttons with Placeholders -->
+            <!-- Store Buttons -->
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                 <!-- iOS Button Placeholder -->
-                 <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center w-full sm:w-auto min-w-[200px] group">
-                    <img src="static/apple.svg" alt="apple">
+                 <!-- iOS Button -->
+                 <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center justify-center w-full sm:w-auto min-w-[200px] group">
+                    <!-- Added w-10 h-10 to limit icon size -->
+                    <img src="static/apple.svg" alt="apple" class="w-10 h-10 mr-4">
                     <div class="text-left">
                         <div class="text-xs text-gray-400">Download on the</div>
                         <div class="text-xl font-bold leading-none">App Store</div>
                     </div>
                </a>
-               <!-- Android Button Placeholder -->
-               <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center w-full sm:w-auto min-w-[200px] group">
-
-                     <img src="static/android.svg" alt="android">
-
+               <!-- Android Button -->
+               <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center justify-center w-full sm:w-auto min-w-[200px] group">
+                   <!-- Added w-10 h-10 to limit icon size -->
+                   <img src="static/android.svg" alt="android" class="w-10 h-10 mr-4">
                    <div class="text-left">
                        <div class="text-xs text-gray-400">GET IT ON</div>
                        <div class="text-xl font-bold leading-none">Google Play</div>
@@ -465,49 +455,83 @@
         </div>
     </section>
 
-    <!-- 7. Simplified Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-16 border-t border-gray-800">
+    <!-- Footer -->
+    <footer class="bg-gray-50 text-gray-600 py-12 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Main Row: Left (Brand), Center (Legal), Right (Social) -->
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <!-- Brand & Contact -->
-                <div class="text-center md:text-left space-y-4">
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <img src="static/logo.svg" alt="cultura bridge">
-                    </div>
-                    <div class="flex flex-col space-y-2 text-sm">
-                        <a href="mailto:support@culturabridge.com" class="hover:text-white transition-colors">support@culturabridge.com</a>
-                        <a href="mailto:partners@culturabridge.com" class="hover:text-white transition-colors">partners@culturabridge.com</a>
+
+                <!-- 1. Left: Logo & Emails -->
+                <div class="flex flex-col items-center md:items-start space-y-4 md:w-1/3">
+                    <div class="flex flex-col items-center md:items-start space-y-1 text-sm text-gray-500">
+                        <a href="mailto:support@culturabridge.com" class="hover:text-cultura transition-colors">support@culturabridge.com</a>
+                        <a href="mailto:partners@culturabridge.com" class="hover:text-cultura transition-colors">partners@culturabridge.com</a>
                     </div>
                 </div>
 
-                <!-- Legal & Social -->
-                <div class="flex flex-col items-center md:items-end gap-6">
+                <!-- 2. Center: Legal Info -->
+                <div class="flex flex-col items-center justify-center space-y-2 md:w-1/3 text-sm font-medium">
+                    <a href="#" id="privacy-link" class="hover:text-cultura transition-colors">Privacy Policy</a>
+                    <a href="#" id="license-link" class="hover:text-cultura transition-colors">License Agreement</a>
+                </div>
+
+                <!-- 3. Right: Social Media -->
+                <div class="flex justify-center md:justify-end md:w-1/3">
                     <div class="flex gap-4">
-                        <!-- Telegram Placeholder -->
-                        <a href="#" class="bg-gray-900 p-3 rounded-full hover:bg-cultura transition-colors border border-gray-800 w-12 h-12 flex items-center justify-center text-xs font-bold text-gray-600">
-                            <img src="static/telegram.svg" alt="telegram">
+                        <!-- Telegram -->
+                        <a href="#" class="bg-white p-3 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all border border-gray-100 w-12 h-12 flex items-center justify-center">
+                            <img src="static/telegram.svg" alt="telegram" class="w-6 h-6">
                         </a>
-                        <!-- VK Placeholder -->
-                        <a href="#" class="bg-gray-900 p-3 rounded-full hover:bg-cultura transition-colors border border-gray-800 w-12 h-12 flex items-center justify-center text-xs font-bold text-gray-600">
-                             <img src="static/vk.svg" alt="vk">
+                        <!-- VK -->
+                        <a href="#" class="bg-white p-3 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all border border-gray-100 w-12 h-12 flex items-center justify-center">
+                             <img src="static/vk.svg" alt="vk" class="w-6 h-6">
                         </a>
-                    </div>
-                    <div class="flex gap-6 text-sm">
-                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" class="hover:text-white transition-colors" onclick="alert('License Agreement Placeholder')">License Agreement</a>
                     </div>
                 </div>
+
             </div>
 
-            <div class="text-center mt-12 pt-8 border-t border-gray-900 text-sm text-gray-600">
+            <!-- Copyright -->
+            <div class="text-center mt-12 pt-8 border-t border-gray-200 text-sm text-gray-400">
                 &copy; 2024-2025 Cultura Bridge. All rights reserved.
             </div>
         </div>
     </footer>
 
+    <!-- LEGAL MODAL -->
+    <div id="legal-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 transition-all duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+            <div class="flex justify-between items-center p-6 border-b border-gray-100">
+                <h3 id="modal-title" class="text-xl font-bold text-gray-900">Legal Document</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-cultura transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="modal-content" class="p-6 overflow-y-auto text-sm text-gray-600 leading-relaxed">
+                Loading...
+            </div>
+        </div>
+    </div>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-2xl p-4 z-[90] hidden transition-transform duration-500 translate-y-full">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-600 text-center sm:text-left">
+                <p>We use cookies to improve your experience and analyze our traffic. By continuing to use our site, you accept our use of cookies.</p>
+            </div>
+            <div class="flex gap-3">
+                <button id="accept-cookies" class="bg-cultura hover:bg-cultura-hover text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors shadow-md">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- JS Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- UI Elements ---
             const navbar = document.getElementById('navbar');
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -515,22 +539,31 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('section, header');
 
-            // 1. Mobile Menu Toggle
+            // --- Modal Elements ---
+            const modal = document.getElementById('legal-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            const closeModalBtn = document.getElementById('close-modal');
+            const privacyLink = document.getElementById('privacy-link');
+            const licenseLink = document.getElementById('license-link');
+
+            // --- Cookie Elements ---
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+            // 1. Mobile Menu Logic
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-
-            // Close mobile menu on link click
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
             });
 
-            // 2. Navbar Visibility on Scroll
+            // 2. Navbar Scroll Logic
             window.addEventListener('scroll', () => {
                 const triggerPoint = promoSection.offsetHeight - 150;
-
                 if (window.scrollY > triggerPoint) {
                     navbar.classList.remove('-translate-y-full');
                 } else {
@@ -542,42 +575,110 @@
             // 3. Scroll Spy
             window.addEventListener('scroll', () => {
                 let current = '';
-
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    // Offset of 150px to account for navbar height
                     if (pageYOffset >= (sectionTop - 200)) {
                         current = section.getAttribute('id');
                     }
                 });
-
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    // Check if href includes the current section ID
                     if (link.getAttribute('href').includes(current) && current !== '') {
                         link.classList.add('active');
                     }
                 });
             });
 
-            // 4. Smooth Scroll Polyfill (for older browsers)
+            // 4. Smooth Scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-
-                    if(targetSection) {
-                        const headerOffset = 100;
-                        const elementPosition = targetSection.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                    // Only prevent default if it's an anchor link, not a modal trigger
+                    if(this.getAttribute('href').startsWith('#') && !this.id.includes('link')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        if(targetSection) {
+                            const headerOffset = 100;
+                            const elementPosition = targetSection.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
                     }
                 });
+            });
+
+            // 5. Modal Logic
+            function openModal(title, fileUrl) {
+                modalTitle.textContent = title;
+                modalContent.innerHTML = '<div class="flex justify-center p-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cultura"></div></div>';
+                modal.classList.remove('hidden');
+
+                fetch(fileUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Document not found");
+                        return response.text();
+                    })
+                    .then(text => {
+                        // Replace newlines with <br> for simple formatting
+                        modalContent.innerHTML = text.replace(/\n/g, '<br>');
+                    })
+                    .catch(error => {
+                        modalContent.innerHTML = `<p class="text-red-500 text-center">Failed to load document. Please try again later.</p>`;
+                        console.error('Error fetching document:', error);
+                    });
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close on backdrop click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            if(privacyLink) {
+                privacyLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal('Privacy Policy', 'static/privacy_policy.txt');
+                });
+            }
+
+            if(licenseLink) {
+                licenseLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal('License Agreement', 'static/license_agreement.txt');
+                });
+            }
+
+            // 6. Cookie Consent Logic
+            // Check local storage
+            if (!localStorage.getItem('culturaCookiesAccepted')) {
+                cookieBanner.classList.remove('hidden');
+                // Small delay for animation
+                setTimeout(() => {
+                    cookieBanner.classList.remove('translate-y-full');
+                }, 100);
+            }
+
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('culturaCookiesAccepted', 'true');
+                cookieBanner.classList.add('translate-y-full');
+                setTimeout(() => {
+                    cookieBanner.classList.add('hidden');
+                }, 500);
             });
         });
     </script>
