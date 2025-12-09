@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultura Bridge - Turn Intercultural Communication into an Adventure</title>
+    <meta name="description" content="Mobile application for learning intercultural communication. Theory, practice, and play combined.">
+
+    <!-- Google Fonts (Lexend) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cultura: {
+                            DEFAULT: 'rgb(170, 19, 42)', // Deep Red from logo
+                            hover: 'rgb(140, 15, 35)',
+                            light: 'rgba(170, 19, 42, 0.05)',
+                            bg: '#FAFAFA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lexend', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(170, 19, 42, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Favicon (Using a simple rect as placeholder or keep existing if you want) -->
+    <link rel="icon" href="static/favicon.ico">
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        #navbar {
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+        }
+        .nav-link.active {
+            color: rgb(170, 19, 42);
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: rgb(170, 19, 42);
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .phone-mockup {
+            border: 12px solid #1f2937;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            aspect-ratio: 9/19;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 25px;
+            background: #1f2937;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+
+        /* Utility for placeholder areas */
+        .placeholder-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,0.1);
+            border: 2px dashed rgba(0,0,0,0.2);
+            color: rgba(0,0,0,0.5);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden selection:bg-cultura selection:text-white">
+
+    <!-- 1. Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transform -translate-y-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo Link -->
+                <a href="#promo" class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-12 h-10 placeholder-area text-xs rounded">
+                        <img src="static/logo.svg" alt="cultura bridge"/>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-10">
+                    <a href="#about-us" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">About Us</a>
+                    <a href="#values" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">Values</a>
+                    <a href="#features" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">How it Works</a>
+                    <a href="#download-section" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">Download</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="#download-section" class="bg-cultura hover:bg-cultura-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors shadow-md hover:shadow-lg">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-cultura focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#about-us" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">About Us</a>
+                <a href="#values" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">Values</a>
+                <a href="#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">How it Works</a>
+                <a href="#download-section" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <header id="promo" class="relative min-h-screen flex items-center justify-center pt-20 pb-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-red-50/50 -z-10"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-cultura-light skew-x-12 opacity-40 -z-10 translate-x-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="space-y-10 text-center lg:text-left">
+                    <!-- Hero Logo Area -->
+                    <div class="flex items-center justify-center lg:justify-start gap-4 mb-4">
+                        <div class="w-20 h-16 placeholder-area rounded text-xs">
+                            <img src="static/logo.svg" alt="cultura bridge"/>
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 tracking-tight">
+                            Cultura <span class="text-cultura">Bridge</span>
+                        </h1>
+                    </div>
+
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                        Intercultural Communication <br/>
+                        <span class="relative inline-block text-cultura">
+                            Is An Adventure
+                        </span>
+                    </h2>
+
+                    <p class="text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Blend knowledge with play to make growth both. From exams to real-world encounters, we turn differences into bridges, not barriers.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2">
+                        <a href="#download-section" class="bg-cultura text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl shadow-red-900/10 hover:bg-cultura-hover hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                            Start Your Journey
+                        </a>
+                        <button onclick="document.getElementById('about-us').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 rounded-xl font-semibold text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 hover:text-cultura transition-all duration-300">
+                            Our Story
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Phone Mockup -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="absolute inset-0 bg-cultura opacity-5 blur-3xl rounded-full transform translate-x-10 translate-y-10 scale-125"></div>
+
+                    <div class="phone-mockup w-72 sm:w-80 shadow-2xl">
+                        <div class="phone-notch"></div>
+                        <!-- Screen -->
+                        <div class="h-full w-full bg-gray-50 flex flex-col relative">
+                            <!-- Header -->
+                            <div class="bg-cultura h-48 p-6 flex flex-col justify-end relative overflow-hidden"> <!-- Increased height to fit logo -->
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+
+                                <div class="w-full flex justify-center mb-3 relative z-10">
+                                    <div class="w-12 h-12 bg-white/20 backdrop-blur border border-white/30 rounded-full flex items-center justify-center text-[10px] text-white font-bold">
+                                        <img src="static/logo.svg" alt="cultura bridge"/>
+                                    </div>
+                                </div>
+
+                                <div class="text-white font-bold text-xl relative z-10">Hi, Student! 👋</div>
+                                <div class="text-red-100 text-sm relative z-10">Let's bridge some cultures today.</div>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="p-5 space-y-4 overflow-y-auto no-scrollbar flex-1">
+                                <!-- Status Card -->
+                                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-xs font-bold text-gray-400 uppercase">Progress</span>
+                                        <span class="text-xs font-bold text-cultura">Level 5</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full w-2/3 bg-cultura rounded-full"></div>
+                                    </div>
+                                    <div class="mt-4 h-16 bg-red-50 rounded-xl flex items-center justify-center text-cultura font-medium text-sm text-center px-2">
+                                        Topic: Business in China
+                                    </div>
+                                </div>
+
+                                <!-- Buttons Grid -->
+                                <div class="grid grid-cols-2 gap-3">
+                                    <!-- Roleplay -->
+                                    <div class="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-center items-center text-sm text-gray-600 font-medium hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-cultura/20">
+                                        <svg class="w-6 h-6 mb-2 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                        Roleplay
+                                    </div>
+                                    <!-- Quiz -->
+                                    <div class="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-center items-center text-sm text-gray-600 font-medium hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-cultura/20">
+                                        <svg class="w-6 h-6 mb-2 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                        Quiz
+                                    </div>
+                                    <!-- Study -->
+                                    <div class="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-center items-center text-sm text-gray-600 font-medium hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-cultura/20">
+                                        <svg class="w-6 h-6 mb-2 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                        Study
+                                    </div>
+                                    <!-- Mini-games -->
+                                    <div class="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-center items-center text-sm text-gray-600 font-medium hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-cultura/20">
+                                        <svg class="w-6 h-6 mb-2 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Mini-games
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Nav (Book, Home, User) -->
+                            <div class="absolute bottom-0 w-full bg-white h-20 border-t border-gray-100 flex justify-around items-center px-4 pb-2">
+                                <!-- Book/Library -->
+                                <button class="p-2 text-gray-400 hover:text-cultura transition-colors flex flex-col items-center gap-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                    <span class="text-[10px] font-medium">Library</span>
+                                </button>
+                                <!-- Home (Active) -->
+                                <button class="p-2 text-cultura flex flex-col items-center gap-1">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+                                    <span class="text-[10px] font-medium">Home</span>
+                                </button>
+                                <!-- Account -->
+                                <button class="p-2 text-gray-400 hover:text-cultura transition-colors flex flex-col items-center gap-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    <span class="text-[10px] font-medium">Profile</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+
+    <!-- 3. About Us Section (Renamed from Origin Story) -->
+    <section id="about-us" class="py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-cultura text-sm font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-cultura"></span>
+                About Us
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                Born at HSE University
+            </h2>
+
+            <p class="text-xl text-gray-600 leading-relaxed mb-8">
+                <span class="font-bold text-gray-900">Cultura Bridge</span> started at the <span class="font-semibold text-cultura">HSE University Moscow campus</span>. Founded by two students of intercultural communication, we were inspired by everyday conversations with peers from around the world.
+            </p>
+
+            <p class="text-lg text-gray-500 leading-relaxed">
+                We realized that real learning happens beyond textbooks—in real encounters, misunderstandings, and shared discoveries. That's why we built a platform where difference only bridges, not divides.
+            </p>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-100 transition-colors">
+                    <div class="text-3xl font-bold text-cultura mb-2">Curiosity</div>
+                    <div class="text-gray-600 font-medium">The key to connection</div>
+                </div>
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-100 transition-colors">
+                    <div class="text-3xl font-bold text-cultura mb-2">Empathy</div>
+                    <div class="text-gray-600 font-medium">Turning difference into opportunity</div>
+                </div>
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-100 transition-colors">
+                    <div class="text-3xl font-bold text-cultura mb-2">Growth</div>
+                    <div class="text-gray-600 font-medium">Making both sides grow</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Values Section (Moved BEFORE Features, was Mission) -->
+    <section id="values" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+
+                        <img src="static/students.webp" alt="students">
+
+                        <div class="absolute inset-0 bg-cultura mix-blend-multiply opacity-10 pointer-events-none"></div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-6 right-6 bg-white p-4 rounded-xl shadow-lg max-w-xs z-10">
+                             <p class="text-sm font-semibold text-gray-800">"Every culture is a doorway, not a barrier."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 space-y-8">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900">Our Values</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At <span class="font-semibold text-cultura">Cultura Bridge</span>, we believe <span class="font-semibold text-gray-900">curiosity</span> is the key to connection. We value <span class="font-semibold text-gray-900">empathy</span> and <span class="font-semibold text-gray-900">open-mindedness</span>.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Whether you are a student preparing for exams or a traveler exploring new lands, our mission is to empower you to navigate global interactions with confidence and grace.
+                    </p>
+
+                    <div class="flex gap-4 pt-4">
+                        <div class="flex items-center gap-2 text-gray-700 font-medium">
+                            <svg class="w-5 h-5 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Effective Communication
+                        </div>
+                         <div class="flex items-center gap-2 text-gray-700 font-medium">
+                            <svg class="w-5 h-5 text-cultura" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Cultural Awareness
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Features Section (Renamed from Education, Moved AFTER Values) -->
+    <section id="features" class="py-32 bg-gray-50 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+        <div class="absolute -left-20 top-40 w-64 h-64 bg-cultura opacity-5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900">How It Works</h2>
+                <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+                    We blend classroom knowledge with interactive gaming to sharpen your skills for exams and real-world travel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Theory in Action -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Theory in Action</h3>
+                    <p class="text-gray-600 leading-relaxed">Turn abstract concepts into practical skills. We prepare you for both academic exams and real-life abroad.</p>
+                </div>
+
+                <!-- Interactive Practice -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Interactive Practice</h3>
+                    <p class="text-gray-600 leading-relaxed">Learn through mini-games, quizzes, and simulations. Education feels like an adventure.</p>
+                </div>
+
+                <!-- Personalized Learning -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Adaptive Feedback</h3>
+                    <p class="text-gray-600 leading-relaxed">Get instant tips that adapt to you. Our system spots your weak points and helps you sharpen them.</p>
+                </div>
+
+                <!-- Community -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Global Community</h3>
+                    <p class="text-gray-600 leading-relaxed">Join discussions with peers worldwide. Share discoveries and learn from real experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Separate Download Section -->
+    <section id="download-section" class="py-32 bg-gray-900 text-white relative overflow-hidden">
+        <!-- Background Accents -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cultura opacity-20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-900 opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">Ready to Bridge the Gap?</h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
+                Join our community of learners turning cultural differences into meaningful connections.
+            </p>
+
+            <!-- Social Proof -->
+            <div class="flex flex-col items-center justify-center gap-3 mb-12">
+                <div class="flex -space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-gray-700 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
+                    <div class="w-12 h-12 rounded-full bg-gray-600 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
+                    <div class="w-12 h-12 rounded-full bg-gray-500 border-4 border-gray-900 flex items-center justify-center text-xs text-gray-400">IMG</div>
+                    <div class="w-12 h-12 rounded-full bg-cultura border-4 border-gray-900 flex items-center justify-center text-xs font-bold text-white">+1k</div>
+                </div>
+                <p class="text-gray-400 font-medium">Joined by 1000+ global learners</p>
+            </div>
+
+            <!-- Store Buttons with Placeholders -->
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                 <!-- iOS Button Placeholder -->
+                 <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center w-full sm:w-auto min-w-[200px] group">
+                    <img src="static/apple.svg" alt="apple">
+                    <div class="text-left">
+                        <div class="text-xs text-gray-400">Download on the</div>
+                        <div class="text-xl font-bold leading-none">App Store</div>
+                    </div>
+               </a>
+               <!-- Android Button Placeholder -->
+               <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center w-full sm:w-auto min-w-[200px] group">
+
+                     <img src="static/android.svg" alt="android">
+
+                   <div class="text-left">
+                       <div class="text-xs text-gray-400">GET IT ON</div>
+                       <div class="text-xl font-bold leading-none">Google Play</div>
+                   </div>
+               </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Simplified Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <!-- Brand & Contact -->
+                <div class="text-center md:text-left space-y-4">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <img src="static/logo.svg" alt="cultura bridge">
+                    </div>
+                    <div class="flex flex-col space-y-2 text-sm">
+                        <a href="mailto:support@culturabridge.com" class="hover:text-white transition-colors">support@culturabridge.com</a>
+                        <a href="mailto:partners@culturabridge.com" class="hover:text-white transition-colors">partners@culturabridge.com</a>
+                    </div>
+                </div>
+
+                <!-- Legal & Social -->
+                <div class="flex flex-col items-center md:items-end gap-6">
+                    <div class="flex gap-4">
+                        <!-- Telegram Placeholder -->
+                        <a href="#" class="bg-gray-900 p-3 rounded-full hover:bg-cultura transition-colors border border-gray-800 w-12 h-12 flex items-center justify-center text-xs font-bold text-gray-600">
+                            <img src="static/telegram.svg" alt="telegram">
+                        </a>
+                        <!-- VK Placeholder -->
+                        <a href="#" class="bg-gray-900 p-3 rounded-full hover:bg-cultura transition-colors border border-gray-800 w-12 h-12 flex items-center justify-center text-xs font-bold text-gray-600">
+                             <img src="static/vk.svg" alt="vk">
+                        </a>
+                    </div>
+                    <div class="flex gap-6 text-sm">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors" onclick="alert('License Agreement Placeholder')">License Agreement</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 pt-8 border-t border-gray-900 text-sm text-gray-600">
+                &copy; 2024-2025 Cultura Bridge. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const promoSection = document.getElementById('promo');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section, header');
+
+            // 1. Mobile Menu Toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Navbar Visibility on Scroll
+            window.addEventListener('scroll', () => {
+                const triggerPoint = promoSection.offsetHeight - 150;
+
+                if (window.scrollY > triggerPoint) {
+                    navbar.classList.remove('-translate-y-full');
+                } else {
+                    navbar.classList.add('-translate-y-full');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // 3. Scroll Spy
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Offset of 150px to account for navbar height
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    // Check if href includes the current section ID
+                    if (link.getAttribute('href').includes(current) && current !== '') {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // 4. Smooth Scroll Polyfill (for older browsers)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if(targetSection) {
+                        const headerOffset = 100;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
