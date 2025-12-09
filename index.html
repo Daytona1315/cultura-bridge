@@ -5,94 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultura Bridge - Turn Intercultural Communication into an Adventure</title>
     <meta name="description" content="Mobile application for learning intercultural communication. Theory, practice, and play combined.">
-
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://culturabridge.com/"> <!-- Будущий домен -->
+    <meta property="og:title" content="Cultura Bridge - Communication Adventure">
+    <meta property="og:description" content="Master intercultural communication with our interactive app.">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
     <!-- Google Fonts (Lexend) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cultura: {
-                            DEFAULT: 'rgb(170, 19, 42)', // Deep Red from logo
-                            hover: 'rgb(140, 15, 35)',
-                            light: 'rgba(170, 19, 42, 0.05)',
-                            bg: '#FAFAFA'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Lexend', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
-                        'glow': '0 0 15px rgba(170, 19, 42, 0.3)'
-                    }
-                }
-            }
-        }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cultura Bridge",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "ANDROID, IOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
     </script>
 
     <!-- Favicon -->
     <link rel="icon" href="static/favicon.ico">
 
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        #navbar {
-            transition: transform 0.3s ease-in-out, background-color 0.3s;
-        }
-        .nav-link.active {
-            color: rgb(170, 19, 42);
-        }
-        .nav-link.active::after {
-            width: 100%;
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: rgb(170, 19, 42);
-            transition: width .3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .phone-mockup {
-            border: 12px solid #1f2937;
-            border-radius: 2.5rem;
-            overflow: hidden;
-            position: relative;
-            background: white;
-            aspect-ratio: 9/19;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 25px;
-            background: #1f2937;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            z-index: 10;
-        }
-
-    </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden selection:bg-cultura selection:text-white">
 
+<body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden selection:bg-cultura selection:text-white">
+<main>
     <!-- 1. Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transform -translate-y-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,7 +46,7 @@
                 <!-- Logo Link -->
                 <a href="#promo" class="flex items-center gap-3 group cursor-pointer">
                     <div class="w-12 h-10">
-                        <img src="static/castle.svg" alt="cultura bridge"/>
+                        <img src="static/castle.svg" alt="cultura bridge app fro education"/>
                     </div>
                 </a>
 
@@ -154,7 +100,7 @@
                     <!-- Hero Logo Area -->
                     <div class="flex items-center justify-center lg:justify-start gap-4 mb-4">
                         <div class="w-full h-full rounded text-xs">
-                            <img src="static/logo.svg" alt="cultura bridge"/>
+                            <img src="static/logo.svg" alt="cultura bridge app for education"/>
                         </div>
                     </div>
 
@@ -309,7 +255,7 @@
                 <div class="md:w-1/2">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
 
-                        <img src="static/students.webp" alt="students">
+                        <img src="static/students.webp" alt="Student using Cultura Bridge app for learning">
 
                         <div class="absolute inset-0 bg-cultura mix-blend-multiply opacity-10 pointer-events-none"></div>
 
@@ -466,7 +412,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
              <div class="flex justify-center mb-6">
-                <img src="static/logo_white.svg" alt="cultura bridge" class="h-10 md:h-12 w-auto">
+                <img src="static/logo_white.svg" alt="cultura bridge app for learning intercultural skills" class="h-10 md:h-12 w-auto">
              </div>
             <h2 class="text-3xl md:text-5xl font-bold mb-8">Ready to Bridge the Gap?</h2>
             <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
@@ -477,13 +423,13 @@
             <div class="flex flex-col items-center justify-center gap-3 mb-12">
                 <div class="flex -space-x-4">
                     <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
-                        <img src="static/stud_1.webp" alt="student" class="w-full h-full object-cover">
+                        <img src="static/stud_1.webp" alt="Student using Cultura Bridge app for learning" class="w-full h-full object-cover">
                     </div>
                     <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
-                        <img src="static/stud_3.webp" alt="student" class="w-full h-full object-cover">
+                        <img src="static/stud_3.webp" alt="Student using Cultura Bridge app for learning" class="w-full h-full object-cover">
                     </div>
                     <div class="w-12 h-12 rounded-full border-2 border-gray-600 overflow-hidden bg-gray-800">
-                        <img src="static/stud_2.webp" alt="student" class="w-full h-full object-cover">
+                        <img src="static/stud_2.webp" alt="Student using Cultura Bridge app for learning" class="w-full h-full object-cover">
                     </div>
                     <div class="w-12 h-12 rounded-full bg-cultura border-2 border-gray-600 flex items-center justify-center text-xs font-bold text-white relative z-10">
                         +1k
@@ -497,7 +443,7 @@
                  <!-- iOS Button -->
                  <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center justify-center w-full sm:w-auto min-w-[200px] group">
                     <!-- Added w-10 h-10 to limit icon size -->
-                    <img src="static/apple.svg" alt="apple" class="w-10 h-10 mr-4">
+                    <img src="static/apple.svg" alt="Download Cultura Bridge on the App Store" class="w-10 h-10 mr-4">
                     <div class="text-left">
                         <div class="text-xs text-gray-400">Download on the</div>
                         <div class="text-xl font-bold leading-none">App Store</div>
@@ -506,7 +452,7 @@
                <!-- Android Button -->
                <a href="#" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 transition-all rounded-2xl p-4 flex items-center justify-center w-full sm:w-auto min-w-[200px] group">
                    <!-- Added w-10 h-10 to limit icon size -->
-                   <img src="static/android.svg" alt="android" class="w-10 h-10 mr-4">
+                   <img src="static/android.svg" alt="Download Cultura Bridge on the Google Play" class="w-10 h-10 mr-4">
                    <div class="text-left">
                        <div class="text-xs text-gray-400">GET IT ON</div>
                        <div class="text-xl font-bold leading-none">Google Play</div>
@@ -542,11 +488,11 @@
                     <div class="flex gap-4">
                         <!-- Telegram -->
                         <a href="#" class="bg-white p-3 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all border border-gray-100 w-12 h-12 flex items-center justify-center">
-                            <img src="static/telegram.svg" alt="telegram" class="w-6 h-6">
+                            <img src="static/telegram.svg" alt="Cultura bridge in telegram" class="w-6 h-6">
                         </a>
                         <!-- VK -->
                         <a href="#" class="bg-white p-3 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all border border-gray-100 w-12 h-12 flex items-center justify-center">
-                             <img src="static/vk.svg" alt="vk" class="w-6 h-6">
+                             <img src="static/vk.svg" alt="cultura bridge in vk" class="w-6 h-6">
                         </a>
                     </div>
                 </div>
@@ -588,7 +534,7 @@
             </div>
         </div>
     </div>
-
+</main>
     <!-- JS Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
