@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- UI Cache ---
     const ui = {
         navbar: document.getElementById('navbar'),
-        mobileMenuBtn: document.getElementById('mobile-menu-btn'),
-        mobileMenu: document.getElementById('mobile-menu'),
+        // Mobile menu elements removed
         promoSection: document.getElementById('promo'),
         navLinks: document.querySelectorAll('.nav-link'),
         sections: document.querySelectorAll('section, header'),
@@ -28,23 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRight: document.getElementById('scroll-right')
     };
 
-    // --- 1. Mobile Menu ---
-    const toggleMenu = () => {
-        ui.mobileMenu.classList.toggle('hidden');
-    };
-
-    if (ui.mobileMenuBtn) {
-        ui.mobileMenuBtn.addEventListener('click', toggleMenu);
-    }
-
-    // Close menu when clicking a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            ui.mobileMenu.classList.add('hidden');
-        });
-    });
-
-    // --- 2. Scroll Logic (Optimized) ---
+    // --- 1. Scroll Logic (Optimized) ---
     let ticking = false;
 
     const onScroll = () => {
@@ -57,16 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ui.navbar.classList.remove('-translate-y-full');
         } else {
             ui.navbar.classList.add('-translate-y-full');
-            ui.mobileMenu.classList.add('hidden');
         }
 
-        // B. Scroll Spy (Active Link Highlighting)
+        // B. Scroll Spy
         let currentSectionId = '';
 
         ui.sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
-            // 200px offset for better UX
             if (scrollY >= (sectionTop - 200)) {
                 currentSectionId = section.getAttribute('id');
             }
@@ -89,15 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // --- 3. Smooth Scroll for Anchors (JS Implementation) ---
-    // This allows smooth scrolling ONLY when clicking links, keeping native scroll performant
+    // --- 2. Smooth Scroll for Anchors ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            // Ignore empty links or non-anchors
             if (!href || href === '#' || href.length < 2) return;
-
-            // Ignore modal triggers (if any links use # for modals)
             if (this.id && (this.id.includes('link') || this.id.includes('btn'))) return;
 
             e.preventDefault();
@@ -114,13 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: "smooth"
                 });
 
-                // Update URL without jump
                 history.pushState(null, null, href);
             }
         });
     });
 
-    // --- 4. Testimonials Carousel ---
+    // --- 3. Testimonials Carousel ---
     if (ui.testimonialsContainer) {
         if (ui.btnLeft) {
             ui.btnLeft.addEventListener('click', () => {
@@ -134,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 5. Modals Logic (Fetch) ---
+    // --- 4. Modals Logic (Fetch) ---
     const openModal = (title, fileUrl) => {
         ui.modalTitle.textContent = title;
         ui.modalContent.innerHTML = '<div class="flex justify-center p-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cultura"></div></div>';
@@ -186,21 +162,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. Cookie Banner ---
-    if (ui.cookieBanner && !localStorage.getItem('culturaCookiesAccepted')) {
-        ui.cookieBanner.classList.remove('hidden');
-        setTimeout(() => {
-            ui.cookieBanner.classList.remove('translate-y-full');
-        }, 100);
+    // --- 5. Cookie Banner ---
+    // Check if user has already accepted cookies
+    if (!localStorage.getItem('culturaCookiesAccepted')) {
+        // Remove the translate class to slide it into view
+        if (ui.cookieBanner) {
+            setTimeout(() => {
+                ui.cookieBanner.classList.remove('translate-y-full');
+            }, 500); // Small delay after page load
+        }
     }
 
     if (ui.acceptCookiesBtn) {
         ui.acceptCookiesBtn.addEventListener('click', () => {
             localStorage.setItem('culturaCookiesAccepted', 'true');
             ui.cookieBanner.classList.add('translate-y-full');
-            setTimeout(() => {
-                ui.cookieBanner.classList.add('hidden');
-            }, 500);
         });
     }
 });

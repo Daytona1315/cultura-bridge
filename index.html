@@ -52,24 +52,6 @@
                         Get Started
                     </a>
                 </div>
-
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-cultura focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-            <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#about-us" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">About Us</a>
-                <a href="#values" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">Values</a>
-                <a href="#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">How it Works</a>
-                <a href="#download-section" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-cultura hover:bg-cultura-light">Download</a>
             </div>
         </div>
     </nav>
@@ -116,13 +98,11 @@
                     <div class="phone-mockup w-72 sm:w-80 shadow-2xl">
                         <div class="phone-notch"></div>
                         <div class="h-full w-full bg-gray-50 flex flex-col relative select-none">
-                            <!-- Phone Header -->
                             <div class="bg-cultura h-28 p-6 flex flex-col justify-end relative overflow-hidden">
                                 <div class="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                                 <div class="text-white font-bold text-xl relative z-10">Hi, Student! 👋</div>
                                 <div class="text-red-100 text-sm relative z-10">Let's bridge some cultures today.</div>
                             </div>
-                            <!-- Phone Body -->
                             <div class="p-5 space-y-4 overflow-y-auto no-scrollbar flex-1">
                                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                                     <div class="flex justify-between items-center mb-2">
@@ -320,30 +300,42 @@
                 </div>
 
                 <div class="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 order-2 lg:order-none">
+                    <!-- Feature 1: Theory -->
                     <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
-                            <img src="static/icons/icon_study.svg" alt="theory" class="w-8 h-8">
+                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cultura transition-colors">
+                            <!-- Masked Icon: Bg is red by default, becomes white on hover -->
+                            <div class="mask-icon w-8 h-8 bg-cultura group-hover:bg-white transition-colors"
+                                 style="-webkit-mask-image: url(static/icons/icon_study.svg); mask-image: url(static/icons/icon_study.svg);"></div>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Theory in Action</h3>
                         <p class="text-gray-600 leading-relaxed">Turn abstract concepts into practical skills. We prepare you for both academic exams and real-life abroad.</p>
                     </div>
+
+                    <!-- Feature 2: Interactive -->
                     <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
-                            <img src="static/icons/icon_minigames.svg" alt="practice" class="w-8 h-8">
+                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cultura transition-colors">
+                            <div class="mask-icon w-8 h-8 bg-cultura group-hover:bg-white transition-colors"
+                                 style="-webkit-mask-image: url(static/icons/icon_minigames.svg); mask-image: url(static/icons/icon_minigames.svg);"></div>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Interactive Practice</h3>
                         <p class="text-gray-600 leading-relaxed">Learn through mini-games, quizzes, and simulations. Education feels like an adventure.</p>
                     </div>
+
+                    <!-- Feature 3: Feedback -->
                     <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
-                            <img src="static/icons/icon_quiz.svg" alt="feedback" class="w-8 h-8">
+                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cultura transition-colors">
+                            <div class="mask-icon w-8 h-8 bg-cultura group-hover:bg-white transition-colors"
+                                 style="-webkit-mask-image: url(static/icons/icon_quiz.svg); mask-image: url(static/icons/icon_quiz.svg);"></div>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Adaptive Feedback</h3>
                         <p class="text-gray-600 leading-relaxed">Get instant tips that adapt to you. Our system spots your weak points and helps you sharpen them.</p>
                     </div>
+
+                    <!-- Feature 4: Community -->
                     <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-cultura mb-6 group-hover:bg-cultura group-hover:text-white transition-colors">
-                            <img src="static/icons/icon_roleplay.svg" alt="community" class="w-8 h-8">
+                        <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cultura transition-colors">
+                            <div class="mask-icon w-8 h-8 bg-cultura group-hover:bg-white transition-colors"
+                                 style="-webkit-mask-image: url(static/icons/icon_roleplay.svg); mask-image: url(static/icons/icon_roleplay.svg);"></div>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Global Community</h3>
                         <p class="text-gray-600 leading-relaxed">Join discussions with peers worldwide. Share discoveries and learn from real experiences.</p>
@@ -552,7 +544,8 @@
     </div>
 
     <!-- COOKIE BANNER -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-2xl p-4 z-[90] hidden transition-transform duration-500 translate-y-full">
+    <!-- Removed "hidden" so it's rendered but pushed off-screen initially -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-2xl p-4 z-[90] transform translate-y-full transition-transform duration-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-sm text-gray-600 text-center sm:text-left">
                 <p>We use cookies to improve your experience and analyze our traffic. By continuing to use our site, you accept our use of cookies.</p>
