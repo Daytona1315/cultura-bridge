@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 2. Scroll Logic (Optimized with requestAnimationFrame) ---
+    // --- 2. Scroll Logic (Optimized) ---
     let ticking = false;
 
-    const updateScrollState = () => {
+    const onScroll = () => {
         const scrollY = window.scrollY;
 
         // A. Navbar Visibility
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // B. Scroll Spy (Active Link Highlighting)
         let currentSectionId = '';
 
-        // Find the current section
         ui.sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
@@ -85,12 +84,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         if (!ticking) {
-            window.requestAnimationFrame(updateScrollState);
+            window.requestAnimationFrame(onScroll);
             ticking = true;
         }
+    }, { passive: true });
+
+    // --- 3. Smooth Scroll for Anchors (JS Implementation) ---
+    // This allows smooth scrolling ONLY when clicking links, keeping native scroll performant
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            // Ignore empty links or non-anchors
+            if (!href || href === '#' || href.length < 2) return;
+
+            // Ignore modal triggers (if any links use # for modals)
+            if (this.id && (this.id.includes('link') || this.id.includes('btn'))) return;
+
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                const headerOffset = 100;
+                const elementPosition = targetSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                // Update URL without jump
+                history.pushState(null, null, href);
+            }
+        });
     });
 
-    // --- 3. Testimonials Carousel ---
+    // --- 4. Testimonials Carousel ---
     if (ui.testimonialsContainer) {
         if (ui.btnLeft) {
             ui.btnLeft.addEventListener('click', () => {
@@ -104,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 4. Modals Logic ---
+    // --- 5. Modals Logic (Fetch) ---
     const openModal = (title, fileUrl) => {
         ui.modalTitle.textContent = title;
         ui.modalContent.innerHTML = '<div class="flex justify-center p-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cultura"></div></div>';
@@ -120,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 ui.modalContent.innerHTML = `<p class="text-red-500 text-center">Failed to load document.</p>`;
-                console.error('Error fetching document:', error);
+                console.error(error);
             });
     };
 
@@ -156,10 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Cookie Banner ---
+    // --- 6. Cookie Banner ---
     if (ui.cookieBanner && !localStorage.getItem('culturaCookiesAccepted')) {
         ui.cookieBanner.classList.remove('hidden');
-        // Small delay to allow transition
         setTimeout(() => {
             ui.cookieBanner.classList.remove('translate-y-full');
         }, 100);
