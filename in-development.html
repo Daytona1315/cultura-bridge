@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Cultura Bridge</title>
+
+    <!-- Google Fonts (Lexend) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Подключаем тот же файл стилей, что и на главной -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Utility for the placeholder area (такой же как на 404) */
+        .placeholder-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-cultura-light, rgba(170, 19, 42, 0.05));
+            border: 2px dashed var(--color-cultura, rgb(170, 19, 42));
+            color: var(--color-cultura, rgb(170, 19, 42));
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-white antialiased flex items-center justify-center min-h-screen p-4">
+
+    <div class="text-center max-w-lg w-full flex flex-col items-center animate-fade-in-up">
+
+        <img src="static/castle_build.svg" alt="cultura bridge app for education">
+
+        <!-- Main Title -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            Coming Soon
+        </h1>
+
+        <!-- Description Text -->
+        <div class="space-y-3 mb-10 max-w-md">
+            <p class="text-xl font-medium text-gray-800">
+                We are currently working on this page.
+            </p>
+            <p class="text-lg font-light text-gray-500 leading-relaxed">
+                Stay tuned! We are building something amazing to help you bridge cultures even better.
+            </p>
+        </div>
+
+        <!-- Return Button -->
+        <a href="index.html" class="inline-block px-8 py-3 rounded-2xl border-2 border-cultura text-cultura font-medium text-lg hover:bg-cultura hover:text-white transition-all duration-300 select-none shadow-soft hover:shadow-lg active:scale-95">
+            Return to Home
+        </a>
+
+    </div>
+
+</body>
+</html>
