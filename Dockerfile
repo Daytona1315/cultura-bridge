@@ -9,6 +9,7 @@ COPY 404.html /usr/share/nginx/html/
 COPY static /usr/share/nginx/html/static
 COPY style.css /usr/share/nginx/html/
 COPY in-development.html /usr/share/nginx/html/
+COPY main.js /usr/share/nginx/html/
 
 EXPOSE 80
 
