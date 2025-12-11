@@ -44,6 +44,7 @@
                     <a href="#about-us" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">About Us</a>
                     <a href="#values" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">Values</a>
                     <a href="#features" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">How it Works</a>
+                    <a href="#faq" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">FAQ</a>
                     <a href="#download-section" class="nav-link text-gray-600 hover:text-cultura transition-colors font-medium py-1">Download</a>
                 </div>
 
@@ -70,7 +71,8 @@
                         </div>
                     </div>
 
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                    <!-- UPDATED: Font size reduced by one step (text-3xl sm:text-4xl lg:text-5xl) -->
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
                         The ultimate app for <br/>
                         <span class="relative inline-block text-cultura">
                             Intercultural Communication
@@ -78,7 +80,7 @@
                     </h2>
 
                     <p class="text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                        Master the art of global connection right from your phone. We blend theory, practice, and play to help you navigate cultural differences with confidence.
+                        We blend theory, practice, and play to help you navigate cultural differences with confidence. Master the art of global connection right from your phone.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-2 select-none">
@@ -299,7 +301,6 @@
                     <!-- Feature 1: Theory -->
                     <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
                         <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cultura transition-colors">
-                            <!-- Masked Icon: Bg is red by default, becomes white on hover -->
                             <div class="mask-icon w-8 h-8 bg-cultura group-hover:bg-white transition-colors"
                                  style="-webkit-mask-image: url(static/icons/icon_study.svg); mask-image: url(static/icons/icon_study.svg);"></div>
                         </div>
@@ -341,14 +342,80 @@
         </div>
     </section>
 
-    <!-- 6. NEW Subscription Section -->
+    <!-- 6. NEW FAQ Section -->
+    <section id="faq" class="py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Common questions about how Cultura Bridge helps you master communication.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-gray-900">What is Cultura Bridge?</span>
+                        <svg class="w-6 h-6 text-cultura transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-8 pb-8 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
+                        Cultura Bridge is a mobile app designed to help you master intercultural communication. It combines educational theory with interactive games, quizzes, and roleplay scenarios to prepare you for real-world interactions abroad.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-gray-900">Who is this app for?</span>
+                        <svg class="w-6 h-6 text-cultura transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-8 pb-8 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
+                        It's perfect for students preparing for exchange programs, business professionals working in international teams, and travelers who want to go deeper than just being a tourist.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-gray-900">Is the app free to use?</span>
+                        <svg class="w-6 h-6 text-cultura transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-8 pb-8 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
+                        Yes! The core learning experience is completely free. We also offer a "Cultura+" subscription for power users who want advanced analytics, early access to new features, and profile customization.
+                    </div>
+                </div>
+
+                 <!-- FAQ Item 4 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-gray-900">Do I need internet access?</span>
+                        <svg class="w-6 h-6 text-cultura transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden px-8 pb-8 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
+                        Most core lessons can be downloaded for offline use, perfect for learning on the plane. However, community features and live updates require an internet connection.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Subscription Section -->
     <section id="subscription" class="py-32 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(244,46,120,0.05) 0%, rgba(193,122,252,0.05) 100%);">
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
 
-            <!-- Badge -->
+            <!-- Badge: Increased size w-24 h-24 (96px), rounded-3xl, icon w-12 h-12 -->
             <div class="inline-flex items-center justify-center mb-8">
-                <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center">
-                    <img src="static/cultura+.svg" alt="Cultura Plus" class="w-10 h-10">
+                <div class="w-24 h-24 bg-white rounded-3xl shadow-md flex items-center justify-center">
+                    <img src="static/cultura_plus_icon.svg" alt="Cultura Plus" class="w-12 h-12">
                 </div>
             </div>
 
@@ -364,19 +431,19 @@
             <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12 mb-10 max-w-2xl mx-auto">
                 <ul class="space-y-4 text-left">
                     <li class="flex items-start gap-3">
-                        <img src="static/icons/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
+                        <img src="static/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
                         <span class="text-gray-700"><strong>Verified Profile:</strong> Stand out with a special badge and highlighted name.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <img src="static/icons/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
+                        <img src="static/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
                         <span class="text-gray-700"><strong>Weekly Insights:</strong> Get a detailed report on your learning productivity.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <img src="static/icons/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
+                        <img src="static/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
                         <span class="text-gray-700"><strong>Early Access:</strong> Be the first to try new scenarios and mini-games.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <img src="static/icons/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
+                        <img src="static/plus.svg" alt="Plus icon" class="w-6 h-6 mt-0.5 shrink-0">
                         <span class="text-gray-700"><strong>Unlimited Reviews:</strong> Revisit tricky quiz questions without limits.</span>
                     </li>
                 </ul>
@@ -394,7 +461,7 @@
         </div>
     </section>
 
-    <!-- 7. Download Section & Testimonials -->
+    <!-- 8. Download Section & Testimonials -->
     <section id="download-section" class="py-32 bg-gray-900 text-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-96 h-96 bg-cultura opacity-20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-900 opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
@@ -420,7 +487,7 @@
 
                 <!-- Cards Container -->
                 <div id="testimonials-container" class="flex gap-6 overflow-x-auto no-scrollbar pb-4 px-4 snap-x snap-mandatory">
-                    <!-- Review cards (same as before) -->
+                    <!-- Review 1 -->
                     <div class="min-w-[300px] md:min-w-[350px] bg-white/10 border border-white/10 p-6 rounded-2xl snap-center text-left hover:bg-white/20 transition-colors">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="text-2xl">🇺🇸</span>
@@ -540,7 +607,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer ... (Same) ... -->
     <footer class="bg-gray-50 text-gray-600 py-12 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -571,7 +638,7 @@
         </div>
     </footer>
 
-    <!-- LEGAL MODAL -->
+    <!-- LEGAL MODAL ... (Same) ... -->
     <div id="legal-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 transition-all duration-300">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col">
             <div class="flex justify-between items-center p-6 border-b border-gray-100">
@@ -586,7 +653,7 @@
         </div>
     </div>
 
-    <!-- COOKIE BANNER -->
+    <!-- COOKIE BANNER ... (Same) ... -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-2xl p-4 z-[90] hidden transition-transform duration-500 translate-y-full">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-sm text-gray-600 text-center sm:text-left">
