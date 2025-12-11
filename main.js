@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- UI Cache ---
     const ui = {
         navbar: document.getElementById('navbar'),
-        // Mobile menu elements removed
         promoSection: document.getElementById('promo'),
         navLinks: document.querySelectorAll('.nav-link'),
         sections: document.querySelectorAll('section, header'),
@@ -96,18 +95,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. Testimonials Carousel ---
-    if (ui.testimonialsContainer) {
-        if (ui.btnLeft) {
-            ui.btnLeft.addEventListener('click', () => {
-                ui.testimonialsContainer.scrollBy({ left: -320, behavior: 'smooth' });
+    // --- 3. Testimonials Carousel (Fixed Buttons) ---
+    if (ui.testimonialsContainer && ui.btnLeft && ui.btnRight) {
+
+        const scrollAmount = () => {
+            // Calculate width of one card + gap (approximate or dynamic)
+            // Default gap is 1.5rem (24px).
+            // First child width is best estimator.
+            const card = ui.testimonialsContainer.firstElementChild;
+            const gap = 24; // Tailwind gap-6 is 1.5rem = 24px
+            return card ? card.offsetWidth + gap : 320;
+        };
+
+        ui.btnLeft.addEventListener('click', () => {
+            ui.testimonialsContainer.scrollBy({
+                left: -scrollAmount(),
+                behavior: 'smooth'
             });
-        }
-        if (ui.btnRight) {
-            ui.btnRight.addEventListener('click', () => {
-                ui.testimonialsContainer.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+
+        ui.btnRight.addEventListener('click', () => {
+            ui.testimonialsContainer.scrollBy({
+                left: scrollAmount(),
+                behavior: 'smooth'
             });
-        }
+        });
     }
 
     // --- 4. Modals Logic (Fetch) ---
@@ -163,13 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 5. Cookie Banner ---
-    // Check if user has already accepted cookies
     if (!localStorage.getItem('culturaCookiesAccepted')) {
-        // Remove the translate class to slide it into view
         if (ui.cookieBanner) {
+            // Ensure display:block first by removing hidden if present in HTML,
+            // but relying on translation for animation
             setTimeout(() => {
                 ui.cookieBanner.classList.remove('translate-y-full');
-            }, 500); // Small delay after page load
+            }, 500);
         }
     }
 
