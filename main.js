@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRight: document.getElementById('scroll-right')
     };
 
-    // --- 1. Scroll Logic (Optimized) ---
+    // --- 1. Scroll Logic ---
     let ticking = false;
 
     const onScroll = () => {
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. Modals Logic (Fetch) ---
+    // --- 4. Modals Logic ---
     const openModal = (title, fileUrl) => {
         ui.modalTitle.textContent = title;
         ui.modalContent.innerHTML = '<div class="flex justify-center p-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cultura"></div></div>';
@@ -171,19 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Cookie Banner ---
+    // --- 5. Cookie Banner (Fix) ---
     if (!localStorage.getItem('culturaCookiesAccepted')) {
         if (ui.cookieBanner) {
+            // Step 1: Remove 'hidden' to make it displayable (but still translated off-screen)
+            ui.cookieBanner.classList.remove('hidden');
+
+            // Step 2: Small delay to ensure browser paints the 'block' state before animating transform
             setTimeout(() => {
                 ui.cookieBanner.classList.remove('translate-y-full');
-            }, 500);
+            }, 100);
         }
     }
 
     if (ui.acceptCookiesBtn) {
         ui.acceptCookiesBtn.addEventListener('click', () => {
             localStorage.setItem('culturaCookiesAccepted', 'true');
+            // Slide down
             ui.cookieBanner.classList.add('translate-y-full');
+            // Hide after animation finishes
+            setTimeout(() => {
+                ui.cookieBanner.classList.add('hidden');
+            }, 500);
         });
     }
 });
