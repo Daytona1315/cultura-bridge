@@ -23,16 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Testimonials
         testimonialsContainer: document.getElementById('testimonials-container'),
         btnLeft: document.getElementById('scroll-left'),
-        btnRight: document.getElementById('scroll-right')
+        btnRight: document.getElementById('scroll-right'),
+
+        // Newsletter
+        newsletterForm: document.getElementById('newsletter-form')
     };
 
-    // --- 1. Scroll Logic ---
+    // --- 1. Scroll Logic (Optimized) ---
     let ticking = false;
 
     const onScroll = () => {
         const scrollY = window.scrollY;
 
-        // A. Navbar Visibility
         const triggerPoint = ui.promoSection ? (ui.promoSection.offsetHeight - 150) : 100;
 
         if (scrollY > triggerPoint) {
@@ -41,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ui.navbar.classList.add('-translate-y-full');
         }
 
-        // B. Scroll Spy
         let currentSectionId = '';
 
         ui.sections.forEach(section => {
@@ -97,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. Testimonials Carousel ---
     if (ui.testimonialsContainer && ui.btnLeft && ui.btnRight) {
-
         const scrollAmount = () => {
             const card = ui.testimonialsContainer.firstElementChild;
             const gap = 24;
@@ -105,21 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         ui.btnLeft.addEventListener('click', () => {
-            ui.testimonialsContainer.scrollBy({
-                left: -scrollAmount(),
-                behavior: 'smooth'
-            });
+            ui.testimonialsContainer.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
         });
 
         ui.btnRight.addEventListener('click', () => {
-            ui.testimonialsContainer.scrollBy({
-                left: scrollAmount(),
-                behavior: 'smooth'
-            });
+            ui.testimonialsContainer.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
         });
     }
 
-    // --- 4. Modals Logic ---
+    // --- 4. Modals Logic (Fetch) ---
     const openModal = (title, fileUrl) => {
         ui.modalTitle.textContent = title;
         ui.modalContent.innerHTML = '<div class="flex justify-center p-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cultura"></div></div>';
@@ -144,26 +138,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (ui.closeModalBtn) ui.closeModalBtn.addEventListener('click', closeModal);
-
     if (ui.modal) {
         ui.modal.addEventListener('click', (e) => {
             if (e.target === ui.modal) closeModal();
         });
     }
-
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && ui.modal && !ui.modal.classList.contains('hidden')) {
             closeModal();
         }
     });
-
     if (ui.privacyLink) {
         ui.privacyLink.addEventListener('click', (e) => {
             e.preventDefault();
             openModal('Privacy Policy', 'static/privacy_policy.txt');
         });
     }
-
     if (ui.licenseLink) {
         ui.licenseLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -171,28 +161,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. Cookie Banner (Fix) ---
+    // --- 5. Cookie Banner ---
     if (!localStorage.getItem('culturaCookiesAccepted')) {
         if (ui.cookieBanner) {
-            // Step 1: Remove 'hidden' to make it displayable (but still translated off-screen)
-            ui.cookieBanner.classList.remove('hidden');
-
-            // Step 2: Small delay to ensure browser paints the 'block' state before animating transform
             setTimeout(() => {
                 ui.cookieBanner.classList.remove('translate-y-full');
-            }, 100);
+            }, 500);
         }
     }
-
     if (ui.acceptCookiesBtn) {
         ui.acceptCookiesBtn.addEventListener('click', () => {
             localStorage.setItem('culturaCookiesAccepted', 'true');
-            // Slide down
             ui.cookieBanner.classList.add('translate-y-full');
-            // Hide after animation finishes
-            setTimeout(() => {
-                ui.cookieBanner.classList.add('hidden');
-            }, 500);
+        });
+    }
+
+    // --- 6. Newsletter Form ---
+    if (ui.newsletterForm) {
+        ui.newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing! You will receive updates soon.');
+            ui.newsletterForm.reset();
         });
     }
 });
