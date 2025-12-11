@@ -184,4 +184,64 @@ document.addEventListener('DOMContentLoaded', () => {
             ui.newsletterForm.reset();
         });
     }
+
+    // --- 7. Feedback Modal ---
+    const contactUi = {
+        btn: document.getElementById('contact-btn'),
+        modal: document.getElementById('contact-modal'),
+        closeBtn: document.getElementById('close-contact-modal'),
+        form: document.getElementById('contact-form'),
+        submitBtn: document.querySelector('#contact-form button[type="submit"]')
+    };
+
+    if (contactUi.btn && contactUi.modal) {
+        // Open Modal
+        contactUi.btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactUi.modal.classList.remove('hidden');
+        });
+
+        // Close Logic
+        const closeContactModal = () => {
+            contactUi.modal.classList.add('hidden');
+        };
+
+        if (contactUi.closeBtn) {
+            contactUi.closeBtn.addEventListener('click', closeContactModal);
+        }
+
+        // Close on backdrop click
+        contactUi.modal.addEventListener('click', (e) => {
+            if (e.target === contactUi.modal) closeContactModal();
+        });
+
+        // Form Submit Simulation
+        if (contactUi.form) {
+            contactUi.form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const originalText = contactUi.submitBtn.textContent;
+
+                // 1. Change button state
+                contactUi.submitBtn.textContent = 'Sending...';
+                contactUi.submitBtn.disabled = true;
+                contactUi.submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+                // 2. Simulate delay
+                setTimeout(() => {
+                    // 3. Success notification
+                    alert('Success!');
+
+                    // 4. Reset and Close
+                    contactUi.form.reset();
+                    closeContactModal();
+
+                    // Restore button
+                    contactUi.submitBtn.textContent = originalText;
+                    contactUi.submitBtn.disabled = false;
+                    contactUi.submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                }, 1000);
+            });
+        }
+    }
 });
