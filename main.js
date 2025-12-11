@@ -95,15 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. Testimonials Carousel (Fixed Buttons) ---
+    // --- 3. Testimonials Carousel ---
     if (ui.testimonialsContainer && ui.btnLeft && ui.btnRight) {
 
         const scrollAmount = () => {
-            // Calculate width of one card + gap (approximate or dynamic)
-            // Default gap is 1.5rem (24px).
-            // First child width is best estimator.
             const card = ui.testimonialsContainer.firstElementChild;
-            const gap = 24; // Tailwind gap-6 is 1.5rem = 24px
+            const gap = 24;
             return card ? card.offsetWidth + gap : 320;
         };
 
@@ -177,8 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. Cookie Banner ---
     if (!localStorage.getItem('culturaCookiesAccepted')) {
         if (ui.cookieBanner) {
-            // Ensure display:block first by removing hidden if present in HTML,
-            // but relying on translation for animation
             setTimeout(() => {
                 ui.cookieBanner.classList.remove('translate-y-full');
             }, 500);
