@@ -1,0 +1,9 @@
+<svg viewBox="0 0 850 850" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="850.000000" height="850.000000" fill="none" customFrame="#000000">
+	<defs>
+		<linearGradient id="paint_linear_0" x1="105.676483" x2="666.999878" y1="144.540451" y2="669" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(244,46,120)" offset="0.24605453" stop-opacity="1" />
+			<stop stop-color="rgb(193,122,252)" offset="1" stop-opacity="0.5" />
+		</linearGradient>
+	</defs>
+	<path id="Слияние" d="M545 305L545 0L305 0L305 305L0 305L0 545L305 545L305 850L545 850L545 545L850 545L850 305L545 305Z" fill="url(#paint_linear_0)" fill-rule="evenodd" />
+</svg>
